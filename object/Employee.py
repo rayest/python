@@ -33,5 +33,6 @@ class MaleEmployee(Employee):
     def childMethod(self):
         print 'This is the child method'
 
+
 maleEmployee = MaleEmployee()
 MaleEmployee.childMethod()
