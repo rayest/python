@@ -2,16 +2,19 @@
 import pymongo
 from pymongo import MongoClient
 
+client = MongoClient('localhost', 27017)
+
 
 def get_mongodb_version():
     print(pymongo.version)
 
 
 def create_data():
-    client = MongoClient('localhost', 27017)
     db = client.python
     collection = db.python
-    collection.insert({"name": "mongodb教程2"})
+    collection.insert({"name": "JAVA"})
+    collection.insert({"name": "REDIS"})
+    print(collection.find_one({"name": "JAVA"}))
 
 
 if __name__ == '__main__':

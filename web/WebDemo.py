@@ -1,5 +1,4 @@
 from flask import Flask
-from flask import request
 
 app = Flask(__name__)
 
@@ -10,4 +9,4 @@ def hello_world(user_name):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

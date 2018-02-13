@@ -129,6 +129,6 @@ print(sorted(["Bnei", "anej", "Cnei", "wnei"], key=str.lower, reverse=True))
 
 
 # 匿名函数
-# 关键字lambda表示匿名函数，冒号前面的x表示函数参数。只能有一个表达式
+# 关键字lambda表示匿名函数，冒号前面的m表示函数参数。只能有一个表达式
 xy = lambda m: m * m
 print(xy(3))
