@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 from flask_bootstrap import Bootstrap
 from flask_wtf import Form
 from wtforms import StringField, SubmitField
@@ -21,6 +21,7 @@ def index():
     if name_form.validate_on_submit():
         username = name_form.username.data
         name_form.username.data = ''
+        return redirect(url_for('index'))
     return render_template('index.html', form=name_form, username=username)
 
 
