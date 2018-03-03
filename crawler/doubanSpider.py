@@ -1,12 +1,10 @@
 import random
 import urllib
-from urllib import urlopen
-
-from bs4 import BeautifulSoup as soup
+import urllib.request
 
 
 def news():
-    client = urlopen("https://book.douban.com/?utm_source=weibolife")
+    client = urllib.request.urlopen("https://book.douban.com/?utm_source=weibolife")
     html_page = client.read()
     client.close()
     content = soup(html_page, "html")
@@ -18,7 +16,7 @@ def news():
         if image_name is None:
             image_name = random.random() * 10
         image_url = image.get('src')
-        urllib.urlretrieve(image_url, "/opt/python/%2s.jpg"%image_name)
+        urllib.request.urlretrieve(image_url, "/opt/python/%2s.jpg" % image_name)
         print("-" * 150)
 
 
