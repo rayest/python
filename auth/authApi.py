@@ -63,6 +63,7 @@ def verify_password(username_or_token, password):
     return True
 
 
+# lee 111111
 @app.route('/user', methods=['POST'])
 def createUser():
     username = request.json.get('username')
