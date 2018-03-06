@@ -2,7 +2,7 @@ import re
 import xlwt
 
 
-def readDataToXls(path):
+def read_data_to_xls(path):
     data_table = xlwt.Workbook(encoding='utf-8', style_compression=0)
     new_sheet = data_table.add_sheet('student', cell_overwrite_ok=True)
     num = 0
@@ -18,4 +18,4 @@ def readDataToXls(path):
 
 
 if __name__ == '__main__':
-    readDataToXls('student.txt')
+    read_data_to_xls('student.txt')

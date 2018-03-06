@@ -4,5 +4,4 @@ import json
 d = dict(name='lee', age=27, score=90)
 print(json.dumps(d))
 
-
-print '哈哈'
+print('哈哈')

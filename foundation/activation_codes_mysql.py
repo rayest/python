@@ -1,6 +1,4 @@
 import uuid
-import pymysql
-
 
 def generateActivationCode(num):
     codeList = []
