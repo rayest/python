@@ -57,5 +57,26 @@ def create_user(username, password):
         print('用户创建成功')
 
 
-if __name__ == '__main__':
-    create_user("lee", "123456")
+def delete_by_username(username):
+    Session = sessionmaker()
+    session = Session()
+    user = session.query(User).filter_by(username=username).first()
+    if user is None:
+        print('用户名不存在')
+    else:
+        session.query(User).filter(User.username == username).delete()
+        print('删除成功')
+    session.commit()
+
+
+def update_by_username(username, password):
+    Session = sessionmaker()
+    session = Session()
+    user = session.query(User).filter_by(username=username).first()
+    if user is None:
+        print('用户名不存在')
+    else:
+        session.query(User).filter(User.username == username).update({User.password: password})
+        print('密码修改成功')
+    session.commit()
+
