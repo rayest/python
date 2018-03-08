@@ -1,3 +1,5 @@
+import unittest
+
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -31,30 +33,28 @@ def test_insert_user():
     except exc.IntegrityError as e:
         session.rollback()
         print(e.__cause__)
+    session.close()
 
 
 def query_by_username(username):
     Session = sessionmaker()
     session = Session()
     user = session.query(User).filter_by(username=username).first()
-    if user is None:
-        print('user is not exist')
-    else:
-        print(user.username)
-        print(user.password)
+    session.close()
+    return user
 
 
 def create_user(username, password):
     Session = sessionmaker()
     session = Session()
-    user = session.query(User).filter_by(username=username).first()
-    if user is not None:
-        print('用户名已存在')
-    else:
-        user = User(username=username, password=password)
-        session.add(user)
-        session.commit()
-        print('用户创建成功')
+    found_user = session.query(User).filter_by(username=username).first()
+    if found_user is not None:
+        return found_user
+    new_user = User(username=username, password=password)
+    session.add(new_user)
+    created_user = session.query(User).filter_by(username=username).first()
+    session.commit()
+    return created_user
 
 
 def delete_by_username(username):
@@ -69,7 +69,7 @@ def delete_by_username(username):
     session.commit()
 
 
-def update_by_username(username, password):
+def update_password_by_username(username, password):
     Session = sessionmaker()
     session = Session()
     user = session.query(User).filter_by(username=username).first()
@@ -80,3 +80,32 @@ def update_by_username(username, password):
         print('密码修改成功')
     session.commit()
 
+
+class TestMysqlOrm(unittest.TestCase):
+    def test_query_by_username(self):
+        username = 'user_name_test_1'
+        user = query_by_username(username)
+        self.assertIsNotNone(user)
+        self.assertEqual(user.password, 'password_test_1')
+        self.assertEqual(user.username, username)
+
+    def test_create_user(self):
+        username = 'user_name_test_4'
+        password = 'password_test_4'
+        user = query_by_username(username)
+        self.assertIsNone(user)
+        created_user = create_user(username, password)
+        self.assertIsNotNone(created_user)
+        self.assertEqual(created_user.username, username)
+        self.assertEqual(created_user.password, password)
+        delete_by_username(username)
+        self.assertIsNone(user)
+
+    def test_update_password_by_username(self):
+        username = 'user_name_test_1'
+        new_password = 'password_test_1_1'
+        update_password_by_username(username, new_password)
+
+
+if __name__ == '__main__':
+    unittest.main()
