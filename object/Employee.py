@@ -34,5 +34,5 @@ class MaleEmployee(Employee):
         print('This is the child method')
 
 
-maleEmployee = MaleEmployee()
+maleEmployee = MaleEmployee('lee', '1000')
 maleEmployee.child_method()
