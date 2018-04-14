@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 import pika
 
-connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
+credentials = pika.PlainCredentials('guest', 'guest')
+parameters = pika.ConnectionParameters('localhost', 5672, '/', credentials)
+connection = pika.BlockingConnection(parameters)
+
+# connection = pika.BlockingConnection(pika.connectionParameters(host='localhost'))
 channel = connection.channel()
 
 channel.queue_declare(queue='hello')
