@@ -1,4 +1,4 @@
-import random
+import random_util
 import urllib
 import urllib.request
 
@@ -14,7 +14,7 @@ def news():
         print(image.get('src'))
         image_name = image.get('alt')
         if image_name is None:
-            image_name = random.random() * 10
+            image_name = random_util.random() * 10
         image_url = image.get('src')
         urllib.request.urlretrieve(image_url, "/opt/python/%2s.jpg" % image_name)
         print("-" * 150)
