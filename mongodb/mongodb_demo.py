@@ -12,8 +12,8 @@ def get_mongodb_version():
 def create_data():
     db = client.python
     collection = db.python
-    collection.insert({"name": "JAVA"})
-    collection.insert({"name": "REDIS"})
+    collection.insert({"name": "JAVA-2"})
+    collection.insert({"name": "REDIS-2"})
     print(collection.find_one({"name": "JAVA"}))
 
 

@@ -3,7 +3,7 @@
 
 import math
 # module introduce
-import introduce
+from foundation import introduce
 
 print ("不换行"),
 print ("换行")
@@ -11,52 +11,52 @@ print ("end")
 
 # 字符串
 description = 'ILovePython'
-print description
-print description[2]
-print description[2:]
-print description[2:5]
-print description * 2
+print(description)
+print(description[2])
+print(description[2:])
+print(description[2:5])
+print(description * 2)
 
 # 列表
 lists = [1, 2, 3, 4, 'ray', 'Lee', 5]
-print lists
-print lists[2]
+print(lists)
+print(lists[2])
 
 # 字典
 dicts = {'name': 'john', 'code': 6734, 'dept': 'sales'}
 dicts.pop('code')
-print dicts.keys()
-print dicts.values()
-print dicts['name']
+print(dicts.keys())
+print(dicts.values())
+print(dicts['name'])
 
 a = 5
 b = 6
-print a != b
+print(a != b)
 if a and b:
-    print 'true'
+    print('true')
 else:
-    print '有一个不为true'
+    print('有一个不为true')
 
 # in and is  is not
 c = 10
 d = 11
 list2 = [1, 2, 3, 4, 5, 10]
-print c in list2
-print c is d
+print(c in list2)
+print(c is d)
 
 # while 循环
 number = 0
 while number < 10:
     number += 1
-print number
+print(number)
 
 # for 循环
 for letter in 'Rayest lee':
-    print letter
+    print(letter)
 
 names = ['Ray', 'Lee', 'Rayest']
 for index in range(len(names)):
-    print names[index]
+    print(names[index])
 
 
 # function
@@ -64,28 +64,28 @@ def say():
     return "Hello"
 
 
-print say()
+print(say())
 
 # lambda function
 sumss = lambda number1, number2: number1 + number2
 result = sumss(10, 20)
-print result
+print(result)
 
-print introduce.minus(20, 10)
+print(introduce.minus(20, 10))
 
 
 def computePrice(total):
     if total < 10:
-        print total * 10
+        print(total * 10)
     elif (total >= 10) & (total < 50):
-        print total * 8
+        print(total * 8)
     else:
-        print total * 5
+        print(total * 5)
 
 
 computePrice(3)
 
-print math.cos(60)
+print(math.cos(60))
 
 
 # 可变参数
@@ -93,13 +93,13 @@ def computeChanges(*scores):
     sums = 0
     for score in scores:
         sums = sums + score
-    print sums
+    print(sums)
 
 
 computeChanges(1, 2, 3, 4, 5, 6)
 
 for x, y in [(1, 2), (3, 4), (5, 6)]:
-    print x, y
+    print(x, y)
 
 
 # Python内建了map()和reduce()函数。将传入的函数依次作用到序列的每个元素

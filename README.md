@@ -20,3 +20,13 @@
 > 如果包的命名不合适，会产生'导入错误'
 
 > pip install -r requirements
+
+### 安装依赖
+> pip3 install xxx
+
+* rabbitMQ
+> 同时开启两个终端以作测试，分别用于处理消息的生产和消费
+
+> `$ python3 hello_world_consumer.py`
+
+> `$ python3 hello_world_producer.py "Hello world"`
